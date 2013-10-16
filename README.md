@@ -1,5 +1,4 @@
 #Nina#
-====
 
 JavaScript User Interface Library
 
@@ -16,7 +15,7 @@ Forms and much more.
 
 Existing UI Libraries use one or more of these undesirable features. 
 
-* Implements non standard event handling systems.
+* Implements non-standard event handling systems.
 * Reliance upon HTML that already exists in the DOM.
 * Not styleable or customizable.
 * Not free and/or open source.
