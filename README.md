@@ -37,9 +37,7 @@ check the [Wiki](https://github.com/CorbinDallas/Nina/wiki).
 
 ##Demos?##
 
-Of course.  On-line demos are coming very soon.  For now, [download the repository zip file](https://github.com/CorbinDallas/Nina/archive/master.zip)
-extract and open demos/index.html in your browser.
-
+[Of course!](http://corbindallas.github.io/Nina/demos/index.html)
 
 ##Contribute##
 
