@@ -1,4 +1,3 @@
-/* core.js */
 ﻿/*
  * Copyright (c) 2013 Tony Germaneri
  * Permission is hereby granted,  free of charge, to any person 
@@ -829,8 +828,7 @@ var Nina = {
             }
         }
     }
-}/* END core.js */
-\r/* START ajax.js */
+}\r/* START ajax.js */
 ﻿/*
  * Copyright (c) 2013 Tony Germaneri
  * Permission is hereby granted,  free of charge, to any person 
