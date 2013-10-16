@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Nina UI Demo - taskBar</title>
+    <style type="text/css">
+        body {
+            background:#808080;
+        }
+    </style>
+    <script type="text/javascript" src="../../lib/core.js"></script>
+    <script type="text/javascript" src="../../lib/style/dialog.js"></script>
+    <script type="text/javascript" src="../../lib/dialog.js"></script>
+    <script type="text/javascript" src="../../lib/style/taskBar.js"></script>
+    <script type="text/javascript" src="../../lib/taskBar.js"></script>
+    <script type="text/javascript">        
+        function openDialog() {
+            window.dialog = Nina.UI.dialog({ title: Nina.createUUID() });
+        }
+        function openTaskBar() {
+            window.taskBar = Nina.UI.taskBar();
+        }
+    </script>
+</head>
+<body>
+    <button onclick="openDialog();">Open Dialog</button>
+    <button onclick="openTaskBar();">Open Task Bar</button>
+</body>
+</html>
