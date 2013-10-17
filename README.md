@@ -32,7 +32,7 @@ need to create powerful client side user interface for any web application.
 
 ##What can it do right now?##
 
-Not much.  Nina is in its early stages of being written.  For an updated list of what's happening
+Not much.  Nina is in its early stages.  For an updated list of what's happening
 check the [Wiki](https://github.com/CorbinDallas/Nina/wiki).
 
 ##Documentation##
