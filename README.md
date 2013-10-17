@@ -39,6 +39,10 @@ check the [Wiki](https://github.com/CorbinDallas/Nina/wiki).
 
 [Of course!](http://corbindallas.github.io/Nina/demos/index.html)
 
+##Download##
+
+[Latest and nightly builds](http://corbindallas.github.io/Nina/nina.html)
+
 ##Contribute##
 
 Nina is free open source software.  
