@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: style/taskBar.js</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: style/taskBar.js</h1>
+    
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>﻿/*
+ * Copyright (c) 2013 Tony Germaneri
+ * Permission is hereby granted,  free of charge, to any person 
+ * obtaining a copy of this software and associated documentation files 
+ * (the "Software"), to deal in the Software without restriction, 
+ * including without limitation the rights to use, copy, modify, merge, 
+ * publish, distribute, sublicense, and/or sell copies of the Software, 
+ * and to permit persons to whom the Software is furnished to do so, 
+ * subject to the following conditions:
+ * The above copyright notice and this permission notice shall be included 
+ * in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, 
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARSING 
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE 
+ * OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+/**
+* Style for the Nina.UI.taskBar
+* @constructor
+* @name taskBar
+* @version 0.1.0 beta release
+* @author Tony Germaneri (TonyGermaneri@gmail.com)
+* @augments Nina.UI.WidgetStyle
+* @requires Nina
+* @requires Nina.UI
+* @memberOf Nina.UI.Style
+* @param {Native.String} [args.background] The background of the taskbar.
+* @param {Native.String} [args.item.background] The background of an item.
+* @param {Native.String} [args.item.hover.background] The background of an item when hovered over.
+* @param {Native.String} [args.item.hover.textColor] The text color of an item when hovered over.
+* @param {Native.String} [args.item.textColor] The text color of an item.
+* @param {Nina.UI.Border} [args.item.border] The border of an item.
+* @param {Nina.UI.String} [args.item.font] The font of an item.
+* @param {Nina.UI.Rect} [args.rect] The rect of the task bar.
+* @param {Nina.UI.Border} [args.border] The top border of the task bar.
+* @param {Nina.UI.Rect} [args.item.rect] The spacing of the items.
+* @param {Nina.UI.Rect} [args.item.spacing] The spacing of the items.
+* @param {Nina.UI.Padding} [args.item.padding] The spacing of the items.
+* @param {Native.Object} [args] Parameters for the style.
+*/
+Nina.UI.Style.taskBar = function(args){
+    var self = Nina.beget(Nina.UI.WidgetStyle);
+    // make sure objects exist
+    args = args || { item: {} };
+    args.item.hover = args.item.hover || { };
+    // create an id for this widget
+    /**
+    * The background of the taskbar.
+    * @field
+    * @name id
+    * @type Native.Integer
+    * @memberOf Nina.UI.Style.taskBar
+    */
+    self.id = Nina.UI.widgetIdCount++;
+    self.item = { hover: {} };
+    /**
+    * The background of the taskbar.
+    * @field
+    * @name type
+    * @type Native.String
+    * @memberOf Nina.UI.Style.taskBar
+    */
+    self.type = "TaskBarStyle";
+    /**
+    * The background of the taskbar.
+    * @field
+    * @name background
+    * @type Native.String
+    * @memberOf Nina.UI.Style.taskBar
+    */
+    self.background = args.background || '#DDD';
+    /**
+    * The background of an item.
+    * @field
+    * @name background
+    * @type Native.String
+    * @memberOf Nina.UI.Style.taskBar.item
+    */
+    self.item.background = args.item.background || '#EFEFEF';
+    /**
+    * The background of an item when hovered over.
+    * @field
+    * @name background
+    * @type Native.String
+    * @memberOf Nina.UI.Style.taskBar.item.hover
+    */
+    self.item.hover.background = args.item.hover.background || '#dddddd';
+    /**
+    * The text color of an item when hovered over.
+    * @field
+    * @name textColor
+    * @type Native.String
+    * @memberOf Nina.UI.Style.taskBar.item.hover
+    */
+    self.item.hover.textColor = args.item.hover.textColor || '#ffffff';
+    /**
+    * The text color of an item.
+    * @field
+    * @name textColor
+    * @type Native.String
+    * @memberOf Nina.UI.Style.taskBar.item
+    */
+    self.item.textColor = args.item.textColor || '#000';
+    /**
+    * The border of an item.
+    * @field
+    * @name border
+    * @type Nina.UI.Border
+    * @memberOf Nina.UI.Style.taskBar.item
+    */
+    self.item.border = args.item.border || { size: 1, style: 'solid', color: '#FFF' };
+    /**
+    * The font of an item.
+    * @field
+    * @name font
+    * @type Native.String
+    * @memberOf Nina.UI.Style.taskBar.item
+    */
+    self.item.font = args.item.font || self.defaultFontFamily;
+    /**
+    * The rect of the task bar.
+    * @field
+    * @name rect
+    * @type Native.Rect
+    * @memberOf Nina.UI.Style.taskBar
+    */
+    self.rect = args.rect || { h: 29, w: 0, x: 0, y: 0 };
+    /**
+    * The top border of the task bar.
+    * @field
+    * @name border
+    * @type Nina.UI.Border
+    * @memberOf Nina.UI.Style.taskBar
+    */
+    self.border = args.border || { size: 1, style: 'solid', color: '#00568f' };
+    /**
+    * The spaceing of the items.
+    * @field
+    * @name spacing
+    * @type Native.Integer
+    * @memberOf Nina.UI.Style.taskBar.item
+    */
+    self.item.spacing = args.item.spacing || 2;
+    /**
+    * The spaceing of the items.
+    * @field
+    * @name rect
+    * @type Nina.UI.Rect
+    * @memberOf Nina.UI.Style.taskBar.item
+    */
+    self.item.rect = args.item.rect || { h: 27, w: 155, x: 0, y: 0 };
+    /**
+    * The spaceing of the items.
+    * @field
+    * @name padding
+    * @type Nina.UI.Padding
+    * @memberOf Nina.UI.Style.taskBar.item
+    */
+    self.item.padding = args.item.padding || { t: 2, r: 4, b: 2, l: 2 };
+    return self;
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="Nina.ajax.html">ajax</a></li><li><a href="Nina.UI.Border.html">Border</a></li><li><a href="Nina.UI.dialog.html">dialog</a></li><li><a href="Nina.UI.Padding.html">Padding</a></li><li><a href="Nina.UI.Point.html">Point</a></li><li><a href="Nina.UI.Rect.html">Rect</a></li><li><a href="Nina.UI.Style.dialog.html">dialog</a></li><li><a href="Nina.UI.Style.dialog.Active.html">Active</a></li><li><a href="Nina.UI.Style.dialog.Active.Hover.html">Hover</a></li><li><a href="Nina.UI.Style.dialog.Inactive.html">Inactive</a></li><li><a href="Nina.UI.Style.dialog.Inactive.Hover.html">Hover</a></li><li><a href="Nina.UI.Style.taskBar.html">taskBar</a></li><li><a href="Nina.UI.taskBar.html">taskBar</a></li><li><a href="Nina.UI.Widget.html">Widget</a></li><li><a href="Nina.UI.html#widgets">widgets</a></li><li><a href="Nina.UI.WidgetStyle.html">WidgetStyle</a></li></ul><h3>Events</h3><ul><li><a href="Nina.UI.dialog.html#event:close">close</a></li><li><a href="Nina.UI.dialog.html#event:dispose">dispose</a></li><li><a href="Nina.UI.dialog.html#event:hide">hide</a></li><li><a href="Nina.UI.dialog.html#event:init">init</a></li><li><a href="Nina.UI.dialog.html#event:maximize">maximize</a></li><li><a href="Nina.UI.dialog.html#event:minimize">minimize</a></li><li><a href="Nina.UI.dialog.html#event:move">move</a></li><li><a href="Nina.UI.dialog.html#event:resize">resize</a></li><li><a href="Nina.UI.dialog.html#event:restore">restore</a></li><li><a href="Nina.UI.dialog.html#event:show">show</a></li><li><a href="Nina.UI.dialog.html#event:stylize">stylize</a></li><li><a href="Nina.UI.dialog.html#event:titleChanged">titleChanged</a></li><li><a href="Nina.UI.taskBar.html#event:addItem">addItem</a></li><li><a href="Nina.UI.taskBar.html#event:click">click</a></li><li><a href="Nina.UI.taskBar.html#event:init">init</a></li><li><a href="Nina.UI.taskBar.html#event:itemClick">itemClick</a></li><li><a href="Nina.UI.taskBar.html#event:itemMouseout">itemMouseout</a></li><li><a href="Nina.UI.taskBar.html#event:itemMouseover">itemMouseover</a></li><li><a href="Nina.UI.taskBar.html#event:mouseout">mouseout</a></li><li><a href="Nina.UI.taskBar.html#event:mouseover">mouseover</a></li><li><a href="Nina.UI.taskBar.html#event:removeItem">removeItem</a></li><li><a href="Nina.UI.taskBar.html#event:updateRect">updateRect</a></li><li><a href="Nina.UI.taskBar.html#event:updateStyle">updateStyle</a></li></ul><h3>Namespaces</h3><ul><li><a href="Nina.html">Nina</a></li><li><a href="Nina.UI.html">UI</a></li><li><a href="Nina.UI.Style.html">Style</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-dev</a> on Thu Oct 17 2013 01:10:59 GMT-0700 (PDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
