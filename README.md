@@ -50,7 +50,7 @@ Create a dialog, then set the title, content and reference using chaining.
 ```
 var x = Nina.UI.dialog()
         .title('Blah')
-        .content('<htmlstuff'>);
+        .content('<htmlstuff>');
 ```
 All widgit methods return a reference to themselves.  Chain all night long and into the next day.
 
