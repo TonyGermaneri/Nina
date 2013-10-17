@@ -18,7 +18,7 @@ check the [Wiki](https://github.com/CorbinDallas/Nina/wiki).
 
 ##Documentation##
 
-[Naturally!]([Of course!](http://corbindallas.github.io/Nina/docs/index.html)
+[Naturally!](http://corbindallas.github.io/Nina/docs/index.html)
 
 ##Demos?##
 
