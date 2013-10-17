@@ -17,11 +17,12 @@ Not much.  Nina is in its early stages.  For an updated list of what's happening
 check the [Wiki](https://github.com/CorbinDallas/Nina/wiki).
 
 ##Documentation##
-In about 2 days max.  Just working on the daily build script.
+
+[Naturally!]([Of course!](http://corbindallas.github.io/Nina/docs/index.html)
 
 ##Demos?##
 
-[Of course!](http://corbindallas.github.io/Nina/demos/index.html)
+[But of course!](http://corbindallas.github.io/Nina/demos/index.html)
 
 ##Download##
 
