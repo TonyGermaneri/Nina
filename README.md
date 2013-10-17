@@ -4,7 +4,7 @@ JavaScript User Interface Library
 
 ##Welcome##
 
-Nina is a free open source JavaScript UI library.  Currently Nina is a work in progress.
+Nina is a free open source JavaScript UI library.  Currently, Nina is a work in progress.
 
 ##Goals##
 
