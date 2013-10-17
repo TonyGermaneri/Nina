@@ -832,6 +832,7 @@ window.Nina = (function () {
             }
         }
     };
+<<<<<<< HEAD
 }());/* START nina_latest.js */
 ﻿/*
  * Copyright (c) 2013 Tony Germaneri
@@ -6821,6 +6822,9 @@ Nina.UI.Style.taskBar = function(args){
 };/* END taskBar.js */
 /* END nina_latest.js */
 /* START dialog.js */
+=======
+}());/* START dialog.js */
+>>>>>>> 73bc55a5e297844dc3409d077c665aa93fa291a4
 ﻿/*
  * Copyright (c) 2013 Tony Germaneri
  * Permission is hereby granted,  free of charge, to any person 
