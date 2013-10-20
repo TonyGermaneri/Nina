@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 /* START nina_latest.js */
-=======
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
 ﻿/*
  * Copyright (c) 2013 Tony Germaneri
  * Permission is hereby granted,  free of charge, to any person 
@@ -30,10 +27,6 @@
 * components.
 * @namespace 
 * @name Nina
-<<<<<<< HEAD
-=======
-* @global
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
 * @version 0.1.0 beta release
 * @author Tony Germaneri (TonyGermaneri@gmail.com)
 */
@@ -308,10 +301,6 @@ window.Nina = (function () {
             * @type Native.Object
             * @name WidgetStyle
             * @memberOf Nina.UI
-<<<<<<< HEAD
-=======
-            * @abstract
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             * @public
             */
             WidgetStyle: {
@@ -389,10 +378,6 @@ window.Nina = (function () {
             * @type Native.Object
             * @name Widget
             * @memberOf Nina.UI
-<<<<<<< HEAD
-=======
-            * @abstract
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             * @public
             */
             Widget: {
@@ -773,7 +758,6 @@ window.Nina = (function () {
                     return this;
                 },
                 /**
-<<<<<<< HEAD
                 * Removes a function from an event for this widget.  This function must reference the function to remove.
                 * @function
                 * @type Native.Function
@@ -28627,12 +28611,6 @@ window.Nina = (function () {
                         throw errMsg;
                     }
                     return this;
-=======
-                * @borrows addEventListener as on
-                */
-                on: function (eventName, procedure) {
-                    return this.addEventListener(eventName, procedure);
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
                 },
                 /**
                 * Removes a function from an event for this widget.  This function must reference the function to remove.
@@ -28760,7 +28738,6 @@ window.Nina = (function () {
 * @param {Native.Boolean} [args.hidden=false] When set true the dialog will be hidden.
 * @param {Native.Boolean} [args.hiddenFromTaskBar=false] When set true the dialog will be hidden from the task bar.
 * @param {Native.String} [args.title] The title of the Nina.UI.dialog.
-<<<<<<< HEAD
 * @example ///Create a simple reference to a new dialog, set the title and make it modal.///
 *var myDialog = Nina.UI.dialog({
 *	title:'My Dialog',
@@ -28786,35 +28763,6 @@ window.Nina = (function () {
 *},false);
 */
 Nina.UI.dialog = function (args) {
-=======
-* @example <caption>Create a simple reference to a new dialog, set the title and make it modal.</caption>
-*var myDialog = Nina.UI.dialog({
-*   title:'My Dialog',
-*   modal: true
-*});
-* @example <caption>Attach to an event when you create the dialog.</caption>
-*var myDialog = Nina.UI.dialog({
-*   title:'My Dialog',
-*   close:function(e,dialog){
-*       dialog.title('Can\'t close me.');
-*       dialog.preventDefault();
-*       return;
-*   }
-*});
-* @example <caption>Attach to an event after you create the dialog</caption>
-*var myDialog = Nina.UI.dialog({
-*   title:'My Dialog'
-*});
-*myDialog.addEventListener('close',function(e,dialog){
-*   dialog.title('Can\'t close me.');
-*   dialog.preventDefault();
-*   return;
-*},false);
-*/
-/*jslint browser: true, bitwise: true, plusplus: true */
-Nina.UI.dialog = function (args) {
-    "use strict";
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
     args = args || {};
     var self = Nina.beget(Nina.UI.Widget);
     self.publicMembers = {};
@@ -28945,10 +28893,7 @@ Nina.UI.dialog = function (args) {
     };
     self.createPublicMembers = function () {
         // API Interface
-<<<<<<< HEAD
         
-=======
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         /**
         * When used in an event listener, prevents the default event.
         * @function
@@ -29265,11 +29210,7 @@ Nina.UI.dialog = function (args) {
     // start the dialog
     self.init = function init() {
         // raise init event
-<<<<<<< HEAD
         if (self.raiseEvent('init', undefined, undefined, undefined)) { return self; };
-=======
-        if (self.raiseEvent('init', undefined, undefined, undefined)) { return self; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         // create an id for this widget
         self.id = Nina.UI.widgetIdCount++;
         // set (most) Boolean arguments  ---> for Booleans not default ? not default : default. 
@@ -29374,13 +29315,8 @@ Nina.UI.dialog = function (args) {
         }
         // apply no select
         self.noSelect([self.titleBar, self.titleBarText, self.n, self.s, self.e,
-<<<<<<< HEAD
         self.w, self.ne, self.se, self.sw, self.nw, self.closeButon,
         self.maximizeButton, self.minimizeButton, self.preview]);
-=======
-            self.w, self.ne, self.se, self.sw, self.nw, self.closeButon,
-            self.maximizeButton, self.minimizeButton, self.preview]);
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         // setup initial rect
         args.rect = args.rect || {};
         self.publicMembers.rect = self.rect = {
@@ -29423,21 +29359,12 @@ Nina.UI.dialog = function (args) {
         self.maximizeButton.addEventListener('mouseover', function () { self.mouseoverButtons(1); }, true);
         self.minimizeButton.addEventListener('mouseover', function () { self.mouseoverButtons(2); }, true);
         // if a taskbar exists then add this dialog to it.
-<<<<<<< HEAD
         if(Nina.UI.widgets.taskBar) {
             self.taskBarItem = Nina.UI.widgets.taskBar.add(self, function () {
                 if(Nina.UI.activeDialog === self){
                     if (self.state === 0) {
                         self.minimize();
                     }else{
-=======
-        if (Nina.UI.widgets.taskBar) {
-            self.taskBarItem = Nina.UI.widgets.taskBar.add(self, function () {
-                if (Nina.UI.activeDialog === self) {
-                    if (self.state === 0) {
-                        self.minimize();
-                    } else {
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
                         self.restore();
                         Nina.UI.activeDialog = self;
                         Nina.UI.stylizeDialogs();
@@ -29496,7 +29423,6 @@ Nina.UI.dialog = function (args) {
     self.originalBodyOverflowStyle = '';
     // set the move state of the dialog
     self.getMoveState = function (e) {
-<<<<<<< HEAD
         if (self.attached) { return self.moveState; };
         var pos = self.mouse(e, self.dialog);
         var s = self.style;
@@ -29514,25 +29440,6 @@ Nina.UI.dialog = function (args) {
             self.dialog.style.cursor = 'sw-resize';
         } else if (pos.y <= s.nwRect.h + s.nwRect.y &&
         pos.x <= s.nwRect.w && self.publicMembers.resizable) {
-=======
-        if (self.attached) { return self.moveState; }
-        var pos = self.mouse(e, self.dialog),
-            s = self.style;
-        if (pos.y <= s.neRect.h + s.neRect.y &&
-                pos.x >= (self.rect.w - (s.eRect.x + s.neRect.w)) && self.publicMembers.resizable) {
-            self.moveState = 4; //ne
-            self.dialog.style.cursor = 'ne-resize';
-        } else if (pos.y >= (self.rect.h - (s.seRect.y + s.seRect.h)) &&
-                pos.x >= (self.rect.w - (s.seRect.x + s.seRect.w)) && self.publicMembers.resizable) {
-            self.moveState = 6; //se
-            self.dialog.style.cursor = 'se-resize';
-        } else if (pos.y >= (self.rect.h - (s.swRect.y + s.swRect.h)) &&
-                pos.x <= s.swRect.w && self.publicMembers.resizable) {
-            self.moveState = 8; //sw
-            self.dialog.style.cursor = 'sw-resize';
-        } else if (pos.y <= s.nwRect.h + s.nwRect.y &&
-                pos.x <= s.nwRect.w && self.publicMembers.resizable) {
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             self.moveState = 2; //nw
             self.dialog.style.cursor = 'nw-resize';
         } else if (pos.y <= s.nRect.h + s.nRect.y && self.publicMembers.resizable) {
@@ -29560,19 +29467,11 @@ Nina.UI.dialog = function (args) {
         return Nina.UI.activeDialog === self;
     };
     self.title = function title(obj) {
-<<<<<<< HEAD
         if (self.raiseEvent('titleChanged', self.titleBarText, obj, undefined)) { return self; };
         if (obj === undefined) { return self.titleBarText.textContent || self.titleBarText.innerText; }
         self.titleBarText.originalText = undefined;
         self.appendObj(self.titleBarText, obj);
         if(Nina.UI.widgets.taskBar) {
-=======
-        if (self.raiseEvent('titleChanged', self.titleBarText, obj, undefined)) { return self; }
-        if (obj === undefined) { return self.titleBarText.textContent || self.titleBarText.innerText; }
-        self.titleBarText.originalText = undefined;
-        self.appendObj(self.titleBarText, obj);
-        if (Nina.UI.widgets.taskBar) {
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             Nina.UI.widgets.taskBar.stylize();
         }
         return self.titleBarText.textContent || self.titleBarText.innerText;
@@ -29585,13 +29484,8 @@ Nina.UI.dialog = function (args) {
             self.preview.style.visibility = 'visible';
         }
         self.getMoveState(e);
-<<<<<<< HEAD
         var o = self.mouseLiteral(e);
         var newRect = { x: self.rect.x, y: self.rect.y, h: self.rect.h, w: self.rect.w };
-=======
-        var o = self.mouseLiteral(e),
-            newRect = { x: self.rect.x, y: self.rect.y, h: self.rect.h, w: self.rect.w };
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         if (self.moveState === 1 && self.attached) {
             //move
             newRect.x = o.x - self.mouseOffset.x;
@@ -29633,26 +29527,16 @@ Nina.UI.dialog = function (args) {
         }
         if (self.attached) {
             if (self.moveState === 1) {
-<<<<<<< HEAD
                 if (self.raiseEvent('move', undefined, undefined, undefined)) { return self; };
             } else if (self.moveState !== 0) {
                 if (self.raiseEvent('resize', undefined, undefined, undefined)) { return self; };
-=======
-                if (self.raiseEvent('move', undefined, undefined, undefined)) { return self; }
-            } else if (self.moveState !== 0) {
-                if (self.raiseEvent('resize', undefined, undefined, undefined)) { return self; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             }
             self.setRect(newRect);
         }
         return self;
     };
     self.startMoving = function startMoving(e) {
-<<<<<<< HEAD
         if (self.controlButtonDepressed) { return; };
-=======
-        if (self.controlButtonDepressed) { return; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         Nina.UI.activeDialog = self;
         Nina.UI.stylizeDialogs();
         self.publicMembers.centerHorizontally = false;
@@ -29673,21 +29557,12 @@ Nina.UI.dialog = function (args) {
     };
     self.moveToCenter = function moveToCenter() {
         if (self.publicMembers.centerHorizontally) {
-<<<<<<< HEAD
             self.rect.x = parseInt(self.client().w * .5, 10) -
                 parseInt(self.rect.w * .5, 10);
         }
         if (self.publicMembers.centerVertically) {
             self.rect.y = parseInt(self.client().h * .5, 10) -
                 parseInt(self.rect.h * .5, 10);
-=======
-            self.rect.x = parseInt(self.client().w * 0.5, 10) -
-                parseInt(self.rect.w * 0.5, 10);
-        }
-        if (self.publicMembers.centerVertically) {
-            self.rect.y = parseInt(self.client().h * 0.5, 10) -
-                parseInt(self.rect.h * 0.5, 10);
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         }
         return self.setRect(self.rect);
     };
@@ -29699,30 +29574,17 @@ Nina.UI.dialog = function (args) {
         if (self.state === 2) {
             // if there's a task bar then don't get so big
             var tbOffsetH = Nina.UI.widgets.taskBar ? Nina.UI.widgets.taskBar.rect.h + Nina.UI.widgets.taskBar.style.border.size : 0;
-<<<<<<< HEAD
             self.rect.x = 0 + self.style.maximizeOffsetRect.x;
             self.rect.y = 0 + self.style.maximizeOffsetRect.y;
             self.rect.w = self.client().w + self.style.maximizeOffsetRect.w;
             self.rect.h = self.client().h + self.style.maximizeOffsetRect.h - tbOffsetH;
             self.setRect(self.rect).stylize();
             if (self.raiseEvent('resize', undefined, undefined, undefined)) { return self; };
-=======
-            self.rect.x = self.style.maximizeOffsetRect.x;
-            self.rect.y = self.style.maximizeOffsetRect.y;
-            self.rect.w = self.client().w + self.style.maximizeOffsetRect.w;
-            self.rect.h = self.client().h + self.style.maximizeOffsetRect.h - tbOffsetH;
-            self.setRect(self.rect).stylize();
-            if (self.raiseEvent('resize', undefined, undefined, undefined)) { return self; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         }
         return self;
     };
     self.minimize = function () {
-<<<<<<< HEAD
         if (self.raiseEvent('minimize', undefined, undefined, undefined)) { return self; };
-=======
-        if (self.raiseEvent('minimize', undefined, undefined, undefined)) { return self; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         self.originalBodyOverflowStyle = document.body.style.overflow;
         self.originalScroll = { top: window.document.documentElement.scrollTop, left: window.document.documentElement.scrollLeft };
         self.restoreRect = { x: self.rect.x, y: self.rect.y, h: self.rect.h, w: self.rect.w };
@@ -29731,11 +29593,7 @@ Nina.UI.dialog = function (args) {
         return self;
     };
     self.maximize = function () {
-<<<<<<< HEAD
         if (self.raiseEvent('maximize', undefined, undefined, undefined)) { return self; };
-=======
-        if (self.raiseEvent('maximize', undefined, undefined, undefined)) { return self; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         self.state = 2;
         self.publicMembers.resizable = false;
         self.publicMembers.moveable = false;
@@ -29749,11 +29607,7 @@ Nina.UI.dialog = function (args) {
         return self;
     };
     self.restore = function () {
-<<<<<<< HEAD
         if (self.raiseEvent('restore', undefined, undefined, undefined)) { return self; };
-=======
-        if (self.raiseEvent('restore', undefined, undefined, undefined)) { return self; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         document.body.style.overflow = self.originalBodyOverflowStyle;
         window.document.documentElement.scrollTop = self.originalScroll.top;
         window.document.documentElement.scrollLeft = self.originalScroll.left;
@@ -29795,11 +29649,7 @@ Nina.UI.dialog = function (args) {
     };
     self.show = function () {
         if (!self.hidden) { return self; }
-<<<<<<< HEAD
         if (self.raiseEvent('show', undefined, undefined, undefined)) { return self; };
-=======
-        if (self.raiseEvent('show', undefined, undefined, undefined)) { return self; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         self.hidden = false;
         self.rect.x = self.showPosition.x;
         self.rect.y = self.showPosition.y;
@@ -29808,11 +29658,7 @@ Nina.UI.dialog = function (args) {
     };
     self.hide = function () {
         if (self.hidden) { return self; }
-<<<<<<< HEAD
         if (self.raiseEvent('hide', undefined, undefined, undefined)) { return self; };
-=======
-        if (self.raiseEvent('hide', undefined, undefined, undefined)) { return self; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         self.hidden = true;
         self.showPosition = undefined;
         return self.setRect(self.rect);
@@ -29825,11 +29671,7 @@ Nina.UI.dialog = function (args) {
         rect.h = rect.h <= s.minRect.h ? s.minRect.h : rect.h;
         self.publicMembers.rect = self.rect = rect;
         if (self.hidden && self.showPosition === undefined) {
-<<<<<<< HEAD
             self.showPosition = { x:self.rect.x,y:self.rect.y };
-=======
-            self.showPosition = { x: self.rect.x, y: self.rect.y };
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             rect.x = -10000;
             rect.y = -10000;
         }
@@ -29847,18 +29689,12 @@ Nina.UI.dialog = function (args) {
         self.updateElementRect(self.dialog, rect.w, rect.h, rect.x, rect.y);
         // title
         self.updateElementRect(self.titleBar,
-<<<<<<< HEAD
         rect.w + s.titleRect.w - s.wRect.w - s.eRect.w - s.titlePadding.r,
         s.titleRect.h - s.titlePadding.t - s.titlePadding.b, s.titleRect.x + s.wRect.w + s.wRect.x, s.titleRect.y + s.nRect.h + s.nRect.y);
-=======
-            rect.w + s.titleRect.w - s.wRect.w - s.eRect.w - s.titlePadding.r,
-            s.titleRect.h - s.titlePadding.t - s.titlePadding.b, s.titleRect.x + s.wRect.w + s.wRect.x, s.titleRect.y + s.nRect.h + s.nRect.y);
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         // title text
         self.titleBarText.style.height = s.titleRect.h - s.titlePadding.t - s.titlePadding.b + 'px';
         //content
         self.updateElementRect(self.content,
-<<<<<<< HEAD
         rect.w + s.contentRect.w - s.wRect.x - s.wRect.x - s.wRect.w - s.eRect.w, // w
         rect.h + s.contentRect.h - s.titleRect.h - s.titleRect.y - s.nRect.y - s.nRect.h + s.sRect.y - s.sRect.h, // h
         s.wRect.w + s.wRect.x + s.contentRect.x, // x
@@ -29908,57 +29744,6 @@ Nina.UI.dialog = function (args) {
         s.closeRect.h, rect.w + s.closeRect.x - s.titlePadding.l -
         s.closeRect.w,
         s.closeRect.y - s.Active.buttonBorder.size);
-=======
-            rect.w + s.contentRect.w - s.wRect.x - s.wRect.x - s.wRect.w - s.eRect.w, // w
-            rect.h + s.contentRect.h - s.titleRect.h - s.titleRect.y - s.nRect.y - s.nRect.h + s.sRect.y - s.sRect.h, // h
-            s.wRect.w + s.wRect.x + s.contentRect.x, // x
-            s.contentRect.y + s.titleRect.h + s.nRect.h + s.nRect.y + s.titleRect.y); // y
-        // n
-        self.updateElementRect(self.n, rect.w - s.wRect.x - s.wRect.w - s.eRect.w,
-            s.nRect.h, s.nRect.x + s.wRect.w + s.wRect.x, s.nRect.y);
-        // ne
-        self.updateElementRect(self.ne, s.neRect.w,
-            s.neRect.h, rect.w + s.neRect.x - s.neRect.w,
-            s.neRect.y);
-        // e
-        self.updateElementRect(self.e, s.eRect.w,
-            rect.h + s.eRect.h - s.nRect.y - s.nRect.h - s.sRect.h,
-            rect.w + s.eRect.x - s.eRect.w,
-            s.eRect.y + s.nRect.y + s.nRect.h);
-        // se
-        self.updateElementRect(self.se, s.seRect.w,
-            s.seRect.h, rect.w + s.seRect.x - s.seRect.w,
-            rect.h + s.seRect.y - s.seRect.h);
-        // s
-        self.updateElementRect(self.s, rect.w - s.wRect.x - s.wRect.w - s.eRect.w,
-            s.sRect.h, s.sRect.x + s.wRect.w + s.wRect.x, rect.h + s.sRect.y - s.sRect.h);
-        // sw
-        self.updateElementRect(self.sw, s.swRect.w,
-            s.swRect.h, s.swRect.x, rect.h + s.swRect.y - s.swRect.h);
-        // w
-        self.updateElementRect(self.w, s.wRect.w,
-            rect.h + s.wRect.h - s.nRect.y - s.nRect.h - s.sRect.h,
-            s.wRect.x, s.wRect.y + s.nRect.y + s.nRect.h);
-        // nw
-        self.updateElementRect(self.nw, s.nwRect.w,
-            s.nwRect.h, s.nwRect.x, s.nwRect.y);
-        // min
-        self.updateElementRect(self.minimizeButton, s.minimizeRect.w,
-            s.minimizeRect.h, rect.w + s.closeRect.x + s.maximizeRect.x +
-            s.minimizeRect.x - s.titlePadding.l - s.minimizeRect.w - s.maximizeRect.w -
-            s.closeRect.w - (s.Active.buttonBorder.size * 5),
-            s.minimizeRect.y - s.Active.buttonBorder.size);
-        // max
-        self.updateElementRect(self.maximizeButton, s.maximizeRect.w,
-            s.maximizeRect.h, rect.w + s.closeRect.x + s.maximizeRect.x - s.titlePadding.l -
-            s.maximizeRect.w - s.closeRect.w - (s.Active.buttonBorder.size * 3),
-            s.maximizeRect.y - s.Active.buttonBorder.size);
-        // close
-        self.updateElementRect(self.closeButon, s.closeRect.w,
-            s.closeRect.h, rect.w + s.closeRect.x - s.titlePadding.l -
-            s.closeRect.w,
-            s.closeRect.y - s.Active.buttonBorder.size);
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         // clip text
         self.clipText(self.titleBarText,
             rect.w + s.titleRect.w - s.wRect.w - s.eRect.w - s.titlePadding.l - s.titlePadding.r -
@@ -29971,17 +29756,9 @@ Nina.UI.dialog = function (args) {
         return self;
     };
     self.stylize = function applyStyle() {// apply the style
-<<<<<<< HEAD
         if (self.raiseEvent('stylize', undefined, undefined, undefined)) { return self; };
         var s = self.style;
         var a = Nina.UI.activeDialog === self ? self.style.Active : self.style.Inactive;
-=======
-        if (self.raiseEvent('stylize', undefined, undefined, undefined)) { return self; }
-        var s = self.style,
-            a = Nina.UI.activeDialog === self ? self.style.Active : self.style.Inactive,
-            b,
-            x;
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         if (Nina.UI.activeDialog === self) {
             if (self.modal || self.publicMembers.alwaysOnTop) {
                 self.modalBackground.style.zIndex = ++Nina.UI.topModalZIndex;
@@ -30011,13 +29788,8 @@ Nina.UI.dialog = function (args) {
         } else {
             self.styleElement(self.maximizeButton, '', a.maximizeButtonBackground); // max
         }
-<<<<<<< HEAD
         var b = [self.closeButon, self.maximizeButton, self.minimizeButton];
         for (var x = 0; b.length > x; x++) {
-=======
-        b = [self.closeButon, self.maximizeButton, self.minimizeButton];
-        for (x = 0; b.length > x; x++) {
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             b[x].style.border = self.border(a.buttonBorder);
             b[x].style.padding = '0';
             b[x].style.margin = '0';
@@ -30027,11 +29799,7 @@ Nina.UI.dialog = function (args) {
     self.dispose = function dispose() {
         if (self.raiseEvent('dispose', undefined, undefined, undefined)) { return self; }
         // remove from taskbar
-<<<<<<< HEAD
         if (Nina.UI.widgets.taskBar && self.taskBarItem){
-=======
-        if (Nina.UI.widgets.taskBar && self.taskBarItem) {
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             Nina.UI.widgets.taskBar.remove(self.taskBarItem);
         }
         // remove events
@@ -30062,10 +29830,7 @@ Nina.UI.dialog = function (args) {
     if (!args.dontInit) {
         self.init();
     }
-<<<<<<< HEAD
     // return publicMembers
-=======
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
     return self.publicMembers;
 };/* END dialog.js */
 /* START taskBar.js */
@@ -30103,10 +29868,6 @@ Nina.UI.dialog = function (args) {
 * @memberOf Nina.UI
 */
 Nina.UI.taskBar = function (args) {
-<<<<<<< HEAD
-=======
-    "use strict";
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
     // there can be only one
     if (Nina.UI.widgets.taskBar !== undefined) {
         return;
@@ -30300,11 +30061,7 @@ Nina.UI.taskBar = function (args) {
     };
     self.init = function () {
         // raise init event
-<<<<<<< HEAD
         if (self.raiseEvent('init', undefined, undefined, undefined)) { return self; };
-=======
-        if (self.raiseEvent('init', undefined, undefined, undefined)) { return self; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         // create an id for this widget
         self.id = Nina.UI.widgetIdCount++;
         Nina.UI.widgets.taskBar = self;
@@ -30322,7 +30079,6 @@ Nina.UI.taskBar = function (args) {
         self.taskBar.style.position = 'absolute';
         self.taskBar.style.overflow = 'hidden';
         self.taskBar.onclick = function (e) {
-<<<<<<< HEAD
             if (self.raiseEvent('click', e, self.taskBar, [])) { return self; };
         };
         self.taskBar.onmouseover = function (e) {
@@ -30330,76 +30086,42 @@ Nina.UI.taskBar = function (args) {
         };
         self.taskBar.onmouseout = function (e) {
             if (self.raiseEvent('mouseout', e, self.taskBar, [])) { return self; };
-=======
-            if (self.raiseEvent('click', e, self.taskBar, [])) { return self; }
-        };
-        self.taskBar.onmouseover = function (e) {
-            if (self.raiseEvent('mouseover', e, self.taskBar, [])) { return self; }
-        };
-        self.taskBar.onmouseout = function (e) {
-            if (self.raiseEvent('mouseout', e, self.taskBar, [])) { return self; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         };
         window.document.body.appendChild(self.taskBar);
         window.addEventListener('resize', self.browserResize, true);
         self.createPublicMembers();
         return self.setRect().stylize();
     };
-<<<<<<< HEAD
     self.browserResize = function() {
-=======
-    self.browserResize = function () {
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         self.setRect();
         return;
     };
     self.setRect = function (rect) {
-<<<<<<< HEAD
         if (self.raiseEvent('updateRect', undefined, undefined, undefined)) { return self; };
         rect = rect || self.rect;
         var s = self.style;
-=======
-        if (self.raiseEvent('updateRect', undefined, undefined, undefined)) { return self; }
-        rect = rect || self.rect;
-        var s = self.style,
-            items,
-            x,
-            l;
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         self.updateElementRect(self.taskBar,
             self.client().w,
             rect.h,
             rect.x,
-<<<<<<< HEAD
             rect.y + self.client().h - rect.h - s.border.size
         );
         var items = self.items;
         for (var x = 0; items.length > x; x++) {
             var l = items[x].element;
-=======
-            rect.y + self.client().h - rect.h - s.border.size);
-        items = self.items;
-        for (x = 0; items.length > x; x++) {
-            l = items[x].element;
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             l.firstChild.innerHTML = '';
             self.appendObj(l.firstChild, items[x].text);
             self.updateElementRect(items[x].element,
                 s.item.rect.w,
                 s.item.rect.h,
                 s.item.rect.x,
-<<<<<<< HEAD
                 s.item.rect.y
             );
-=======
-                s.item.rect.y);
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             self.clipText(l.firstChild, s.item.rect.w - s.item.padding.r - s.item.padding.l);
         }
         return self;
     };
     self.stylize = function () {
-<<<<<<< HEAD
         if (self.raiseEvent('updateStyle', undefined, undefined, undefined)) { return self; };
         var s = self.style;
         self.taskBar.style.background = s.background;
@@ -30407,18 +30129,6 @@ Nina.UI.taskBar = function (args) {
         var items = self.items;
         for (var x = 0; items.length > x; x++) {
             var l = items[x].element;
-=======
-        if (self.raiseEvent('updateStyle', undefined, undefined, undefined)) { return self; }
-        var s = self.style,
-            items,
-            x,
-            l;
-        self.taskBar.style.background = s.background;
-        self.taskBar.style.borderTop = self.border(s.border);
-        items = self.items;
-        for (x = 0; items.length > x; x++) {
-            l = items[x].element;
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             l.firstChild.style.padding = self.pad(s.item.padding);
             l.style.fontFamily = s.item.font;
             l.style.color = s.item.textColor;
@@ -30428,7 +30138,6 @@ Nina.UI.taskBar = function (args) {
         }
         return self;
     };
-<<<<<<< HEAD
     self.redraw = function() {
         return self.stylize().setRect();
     };
@@ -30445,36 +30154,13 @@ Nina.UI.taskBar = function (args) {
         var l = item.element;
         l.onclick = function(e) {
             if (self.raiseEvent('itemClick', e, l, [])) { return self; };
-=======
-    self.redraw = function () {
-        return self.stylize().setRect();
-    };
-    self.add = function (obj, click, text, over, out) {
-        var l,
-            item = {
-                obj: obj,
-                click: click,
-                text: text,
-                mouseover: over,
-                mouseout: out,
-                element: self.createElement('div')
-            };
-        if (self.raiseEvent('addItem', obj, item, [])) { return self; }
-        l = item.element;
-        l.onclick = function (e) {
-            if (self.raiseEvent('itemClick', e, l, [])) { return self; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             self.activeItem = item;
             if (!item.click) { return self; }
             item.click.apply(self, [e, l]);
             return self;
         };
         l.onmouseover = function (e) {
-<<<<<<< HEAD
             if (self.raiseEvent('itemMouseover', e, l, [])) { return self; };
-=======
-            if (self.raiseEvent('itemMouseover', e, l, [])) { return self; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             l.style.background = self.style.item.hover.background;
             l.style.color = self.style.item.hover.textColor;
             self.hoverItem = item;
@@ -30483,11 +30169,7 @@ Nina.UI.taskBar = function (args) {
             return self;
         };
         l.onmouseout = function (e) {
-<<<<<<< HEAD
             if (self.raiseEvent('itemMouseout', e, l, [])) { return self; };
-=======
-            if (self.raiseEvent('itemMouseout', e, l, [])) { return self; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             l.style.background = self.style.item.background;
             l.style.color = self.style.item.textColor;
             if (!item.mouseout) { return self; }
@@ -30507,18 +30189,10 @@ Nina.UI.taskBar = function (args) {
         return item;
     };
     self.remove = function (item) {
-<<<<<<< HEAD
         var items = self.items;
         for (var x = 0; items.length > x; x++) {
             if (items[x] === item) {
                 if (self.raiseEvent('removeItem', items[x], item.element, [])) { return self; };
-=======
-        var items = self.items,
-            x;
-        for (x = 0; items.length > x; x++) {
-            if (items[x] === item) {
-                if (self.raiseEvent('removeItem', items[x], item.element, [])) { return self; }
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
                 self.taskBar.removeChild(item.element);
                 self.items.splice(x, 1);
             }
@@ -30626,7 +30300,6 @@ Nina.UI.taskBar = function (args) {
 * });
 */
 Nina.ajax = function (args, options) {
-<<<<<<< HEAD
     // using this as a reference http://www.w3.org/TR/XMLHttpRequest/
     Nina.assert(args !== undefined, 'Nina.ajax missing parameter.');
     var self = {};
@@ -30637,68 +30310,6 @@ Nina.ajax = function (args, options) {
         try { return new ActiveXObject('Microsoft.XMLHTTP'); } catch(e) {}
         return null;
     };
-=======
-    "use strict";
-    // using this as a reference http://www.w3.org/TR/XMLHttpRequest/
-    Nina.assert(args !== undefined, 'Nina.ajax missing parameter.');
-    var self = {},
-        createRequest,
-        parseFiles,
-        pushFile,
-        writeFileId,
-        readyStateChange;
-    self.options = options || { };
-    createRequest = function () {
-        try { return new XMLHttpRequest(); } catch (ignore) {}
-        try { return new ActiveXObject('Msxml2.XMLHTTP'); } catch (ignore) {}
-        try { return new ActiveXObject('Microsoft.XMLHTTP'); } catch (ignore) {}
-        return null;
-    };
-    parseFiles = function () {
-        var x,
-            t,
-            p,
-            fa,
-            f,
-            y,
-            a,
-            z;
-        for (x = 0; args.length > x; x++) {
-            a = args[x];
-            for (t = 0; args[x].parameters.length > t; t++) {
-                p = args[x].parameters[t];
-                if (Nina.isArray(p)) {
-                    fa = [];
-                    for (z = 0; p.length > z; z++) {
-                        f = p[z];
-                        if (f.type === 'file') {
-                            for (y = 0; f.files.length > y; y++) {
-                                pushFile(f.files[y], a);
-                                f.files[y].fileId = writeFileId(a.method, a.instanceNumber, z, y);
-                                fa.push(f.files[y].fileId);
-                            }
-                        }
-                    }
-                    if (fa.length > 0) {
-                        args[x].parameters[t] = fa.join("");
-                    }
-                } else {
-                    if (p.type === 'file') {
-                        fa = [];
-                        for (y = 0; p.files.length > y; y++) {
-                            pushFile(p.files[y], a);
-                            p.files[y].fileId = writeFileId(a.method, a.instanceNumber, 0, y);
-                            fa.push(p.files[y].fileId);
-                        }
-                        if (fa.length > 0) {
-                            args[x].parameters[t] = fa.join("");
-                        }
-                    }
-                }
-            }
-        }
-    };
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
     /**
     * Begins the request.
     * @function
@@ -30708,30 +30319,16 @@ Nina.ajax = function (args, options) {
     * @returns {Nina.ajax} Nina.ajax instance.
     */
     self.beginRequest = function () {
-<<<<<<< HEAD
-=======
-        var x,
-            d = new FormData(),
-            z;
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         self.map = [];
         self.methodInstances = { };
         if (!Nina.isArray(args)) {
             args = [args];
         }
-<<<<<<< HEAD
         for (var x = 0; args.length > x; x++) {
             // assign this method an instance number in case it occurs more than once
             if (self.methodInstances[args[x].method] === undefined) {
                 self.methodInstances[args[x].method] = 0;
             }else {
-=======
-        for (x = 0; args.length > x; x++) {
-            // assign this method an instance number in case it occurs more than once
-            if (self.methodInstances[args[x].method] === undefined) {
-                self.methodInstances[args[x].method] = 0;
-            } else {
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
                 self.methodInstances[args[x].method]++;
             }
             self.map.push([
@@ -30743,11 +30340,7 @@ Nina.ajax = function (args, options) {
         }
         self.id = Nina.createUUID();
         self.request = createRequest();
-<<<<<<< HEAD
         self.request.upload.addEventListener('loadstart',function (e) {
-=======
-        self.request.upload.addEventListener('loadstart', function (e) {
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             if (typeof self.options.loadstart !== 'function') { return; }
             self.options.loadstart.apply(this, [e]);
         }, false);
@@ -30775,29 +30368,19 @@ Nina.ajax = function (args, options) {
             if (typeof self.options.loadend !== 'function') { return; }
             self.options.loadend.apply(this, [e]);
         }, false);
-<<<<<<< HEAD
         self.request.addEventListener('readystatechange', function () {
-=======
-        self.request.addEventListener('readystatechange', function (e) {
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             if (typeof self.options.readyStateChange !== 'function') {
                 readyStateChange();
                 return;
             }
             // allow user to abort default readStateChange by returning false.
-<<<<<<< HEAD
             if(self.options.readyStateChange.apply(this, [e])!==false) {
                 readyStateChange();
-=======
-            if (self.options.readyStateChange.apply(this, [e]) !== false) {
-                self.options.readyStateChange();
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             }
         }, false);
         self.request.open(self.options.method || 'POST', (self.options.responderUrl || '/responder') + '?' + self.id, self.options.async === false ? false : true);
         self.request.setRequestHeader('Content-Type', self.options.contentType || 'application/x-www-form-urlencoded; charset=utf-8');
         self.request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-<<<<<<< HEAD
         if(self.options.headers!==undefined) {
             for(var x=0;self.options.headers.length>x;x++) {
                 self.request.setRequestHeader(self.options.headers[x][0], self.options.headers[x][1]);
@@ -30811,20 +30394,6 @@ Nina.ajax = function (args, options) {
         for (var x = 0; args.length > x; x++) {
             if (args[x].files) {
                 for (var z = 0; args[x].files.length > z; z++) {
-=======
-        if (self.options.headers !== undefined) {
-            for (x = 0; self.options.headers.length > x; x++) {
-                self.request.setRequestHeader(self.options.headers[x][0], self.options.headers[x][1]);
-            }
-        }
-        d.append("id", self.id);
-        // parse map looking for file inputs and replace them with IDs
-        parseFiles();
-        d.append("map", JSON.stringify(self.map));
-        for (x = 0; args.length > x; x++) {
-            if (args[x].files) {
-                for (z = 0; args[x].files.length > z; z++) {
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
                     d.append(args[x].files[z].fileId, args[x].files[z]);
                 }
             }
@@ -30832,18 +30401,13 @@ Nina.ajax = function (args, options) {
         self.request.send(d);
         return self;
     };
-<<<<<<< HEAD
     var pushFile = function(f, a) {
-=======
-    pushFile = function (f, a) {
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
         if (Nina.isArray(a.files)) {
             a.files.push(f);
         } else {
             a.files = [f];
         }
     };
-<<<<<<< HEAD
     var writeFileId = function(method, instance, z, y) {
         return "file:::" + method + '_' + instance + "_files_" + z + "_" + y;
     };
@@ -30886,22 +30450,10 @@ Nina.ajax = function (args, options) {
     var readyStateChange = function() {
         if (self.request.readyState != 4 || self.request.status == 0) { return; }
         if (self.request.status != 200) {
-=======
-    writeFileId = function (method, instance, z, y) {
-        return "file:::" + method + '_' + instance + "_files_" + z + "_" + y;
-    };
-    readyStateChange = function () {
-        var allResults,
-            instanceNumber,
-            x;
-        if (self.request.readyState !== 4 || self.request.status === 0) { return; }
-        if (self.request.status !== 200) {
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
             // an error occurred
             Nina.UI.Widget.log('Nina.ajax request returned a status of ' + self.request.status + ':\n' + self.request.responseText);
             return;
         }
-<<<<<<< HEAD
         var allResults = JSON.parse(self.request.responseText);
         // separate responses into map collection and call callback functions
         for (var x = 0; args.length > x; x++) {
@@ -30914,20 +30466,6 @@ Nina.ajax = function (args, options) {
     }
     return self;
 }/* END ajax.js */
-=======
-        allResults = JSON.parse(self.request.responseText);
-        // separate responses into map collection and call callback functions
-        for (x = 0; args.length > x; x++) {
-            instanceNumber = self.methodInstances[args[x].method] > 0 ? '_' + args[x].instanceNumber : '';
-            args[x].procedure.apply(args[x].context || this, [allResults[args[x].method + instanceNumber], allResults]);
-        }
-    };
-    if (self.options.delayRequest !== false) {
-        self.beginRequest();
-    }
-    return self;
-};/* END ajax.js */
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
 /* START dialog.js */
 ﻿/*
  * Copyright (c) 2013 Tony Germaneri
@@ -31031,10 +30569,6 @@ Nina.ajax = function (args, options) {
 * @param {Native.String} [args.previewBackground] The background for the move/resize preview overlay.
 */
 Nina.UI.Style.dialog = function (args) {
-<<<<<<< HEAD
-=======
-    "use strict";
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
     var self = Nina.beget(Nina.UI.WidgetStyle);
     // make sure objects exist
     args = args || {};
@@ -31093,11 +30627,7 @@ Nina.UI.Style.dialog = function (args) {
     * @type Nina.UI.Rect
     * @memberOf Nina.UI.Style.dialog
     */
-<<<<<<< HEAD
     self.rect = args.rect || { x: parseInt(document.documentElement.clientWidth * .5, 10) - 250, y: 100, h: 350, w: 500 };
-=======
-    self.rect = args.rect || { x: parseInt(document.documentElement.clientWidth * 0.5, 10) - 250, y: 100, h: 350, w: 500 };
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
     /**
     * The minimum size Nina.UI.Rect used by the Nina.UI.Dialog.
     * @field
@@ -31637,11 +31167,7 @@ Nina.UI.Style.dialog = function (args) {
     */
     self.previewOutline = args.previewOutline || { size: 1, style: 'solid', color: '#00568f' };
     return self;
-<<<<<<< HEAD
 }/* END dialog.js */
-=======
-};/* END dialog.js */
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
 /* START taskBar.js */
 ﻿/*
  * Copyright (c) 2013 Tony Germaneri
@@ -31688,12 +31214,7 @@ Nina.UI.Style.dialog = function (args) {
 * @param {Nina.UI.Padding} [args.item.padding] The spacing of the items.
 * @param {Native.Object} [args] Parameters for the style.
 */
-<<<<<<< HEAD
 Nina.UI.Style.taskBar = function(args){
-=======
-Nina.UI.Style.taskBar = function (args) {
-    "use strict";
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
     var self = Nina.beget(Nina.UI.WidgetStyle);
     // make sure objects exist
     args = args || { item: {} };
@@ -31814,8 +31335,5 @@ Nina.UI.Style.taskBar = function (args) {
     self.item.padding = args.item.padding || { t: 2, r: 4, b: 2, l: 2 };
     return self;
 };/* END taskBar.js */
-<<<<<<< HEAD
 /* END nina-nightly-20131017.js */
 /* END nina-latest.js */
-=======
->>>>>>> abd64b78add526e1addb4c64dbf83c0295e7ab2c
