@@ -788,32 +788,33 @@ resizable, control boxes etc. dozens of events to attach to.</p>
     
         <h5>Examples</h5>
         
-    <pre class="prettyprint"><code> ///Create a simple reference to a new dialog, set the title and make it modal.///
-var myDialog = Nina.UI.dialog({
-	title:'My Dialog',
-	modal: true
+        <p class="code-caption">Create a simple reference to a new dialog, set the title and make it modal.</p>
+    
+    <pre class="prettyprint"><code>var myDialog = Nina.UI.dialog({
+  title:'My Dialog',
+  modal: true
 });</code></pre>
 
         <p class="code-caption">Attach to an event when you create the dialog.</p>
     
     <pre class="prettyprint"><code>var myDialog = Nina.UI.dialog({
-	title:'My Dialog',
-	close:function(e,dialog){
-	    dialog.title('Can\'t close me.');
-		dialog.preventDefault();
-		return;
-	}
+  title:'My Dialog',
+  close:function(e,dialog){
+      dialog.title('Can\'t close me.');
+      dialog.preventDefault();
+      return;
+  }
 });</code></pre>
 
         <p class="code-caption">Attach to an event after you create the dialog</p>
     
     <pre class="prettyprint"><code>var myDialog = Nina.UI.dialog({
-	title:'My Dialog'
+  title:'My Dialog'
 });
 myDialog.addEventListener('close',function(e,dialog){
   dialog.title('Can\'t close me.');
-	dialog.preventDefault();
-	return;
+  dialog.preventDefault();
+  return;
 },false);</code></pre>
 
     
@@ -900,7 +901,7 @@ myDialog.addEventListener('close',function(e,dialog){
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line501">line 501</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line502">line 502</a>
     </li></ul></dd>
     
     
@@ -964,7 +965,7 @@ myDialog.addEventListener('close',function(e,dialog){
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line415">line 415</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line416">line 416</a>
     </li></ul></dd>
     
     
@@ -1028,7 +1029,7 @@ myDialog.addEventListener('close',function(e,dialog){
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line423">line 423</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line424">line 424</a>
     </li></ul></dd>
     
     
@@ -1092,7 +1093,7 @@ myDialog.addEventListener('close',function(e,dialog){
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line431">line 431</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line432">line 432</a>
     </li></ul></dd>
     
     
@@ -1156,7 +1157,7 @@ myDialog.addEventListener('close',function(e,dialog){
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line509">line 509</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line510">line 510</a>
     </li></ul></dd>
     
     
@@ -1220,7 +1221,7 @@ myDialog.addEventListener('close',function(e,dialog){
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line485">line 485</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line486">line 486</a>
     </li></ul></dd>
     
     
@@ -1284,7 +1285,7 @@ myDialog.addEventListener('close',function(e,dialog){
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line465">line 465</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line466">line 466</a>
     </li></ul></dd>
     
     
@@ -1348,7 +1349,7 @@ myDialog.addEventListener('close',function(e,dialog){
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line457">line 457</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line458">line 458</a>
     </li></ul></dd>
     
     
@@ -1412,7 +1413,7 @@ myDialog.addEventListener('close',function(e,dialog){
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line493">line 493</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line494">line 494</a>
     </li></ul></dd>
     
     
@@ -1476,7 +1477,7 @@ myDialog.addEventListener('close',function(e,dialog){
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line407">line 407</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line408">line 408</a>
     </li></ul></dd>
     
     
@@ -1540,7 +1541,7 @@ myDialog.addEventListener('close',function(e,dialog){
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line439">line 439</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line440">line 440</a>
     </li></ul></dd>
     
     
@@ -1699,7 +1700,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line378">line 378</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line379">line 379</a>
     </li></ul></dd>
     
     
@@ -1790,7 +1791,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line218">line 218</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line219">line 219</a>
     </li></ul></dd>
     
     
@@ -1941,7 +1942,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line473">line 473</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line474">line 474</a>
     </li></ul></dd>
     
     
@@ -2032,7 +2033,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line353">line 353</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line354">line 354</a>
     </li></ul></dd>
     
     
@@ -2123,7 +2124,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line230">line 230</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line231">line 231</a>
     </li></ul></dd>
     
     
@@ -2214,7 +2215,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line278">line 278</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line279">line 279</a>
     </li></ul></dd>
     
     
@@ -2305,7 +2306,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line447">line 447</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line448">line 448</a>
     </li></ul></dd>
     
     
@@ -2396,7 +2397,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line254">line 254</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line255">line 255</a>
     </li></ul></dd>
     
     
@@ -2487,7 +2488,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line242">line 242</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line243">line 243</a>
     </li></ul></dd>
     
     
@@ -2638,7 +2639,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line301">line 301</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line302">line 302</a>
     </li></ul></dd>
     
     
@@ -2729,7 +2730,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line206">line 206</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line207">line 207</a>
     </li></ul></dd>
     
     
@@ -2820,7 +2821,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line365">line 365</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line366">line 366</a>
     </li></ul></dd>
     
     
@@ -3004,7 +3005,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line393">line 393</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line394">line 394</a>
     </li></ul></dd>
     
     
@@ -3095,7 +3096,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line266">line 266</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line267">line 267</a>
     </li></ul></dd>
     
     
@@ -3246,7 +3247,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line314">line 314</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line315">line 315</a>
     </li></ul></dd>
     
     
@@ -3397,7 +3398,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line328">line 328</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line329">line 329</a>
     </li></ul></dd>
     
     
@@ -3488,7 +3489,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line341">line 341</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line342">line 342</a>
     </li></ul></dd>
     
     
@@ -3639,7 +3640,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line289">line 289</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line290">line 290</a>
     </li></ul></dd>
     
     
@@ -3809,7 +3810,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line122">line 122</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line124">line 124</a>
     </li></ul></dd>
     
     
@@ -3949,7 +3950,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line92">line 92</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line94">line 94</a>
     </li></ul></dd>
     
     
@@ -4089,7 +4090,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line112">line 112</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line114">line 114</a>
     </li></ul></dd>
     
     
@@ -4229,7 +4230,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line82">line 82</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line84">line 84</a>
     </li></ul></dd>
     
     
@@ -4369,7 +4370,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line142">line 142</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line144">line 144</a>
     </li></ul></dd>
     
     
@@ -4509,7 +4510,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line132">line 132</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line134">line 134</a>
     </li></ul></dd>
     
     
@@ -4649,7 +4650,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line162">line 162</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line164">line 164</a>
     </li></ul></dd>
     
     
@@ -4789,7 +4790,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line172">line 172</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line174">line 174</a>
     </li></ul></dd>
     
     
@@ -4929,7 +4930,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line152">line 152</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line154">line 154</a>
     </li></ul></dd>
     
     
@@ -5069,7 +5070,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line102">line 102</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line104">line 104</a>
     </li></ul></dd>
     
     
@@ -5209,7 +5210,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line182">line 182</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line184">line 184</a>
     </li></ul></dd>
     
     
@@ -5349,7 +5350,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line192">line 192</a>
+        <a href="dialog.js.html">dialog.js</a>, <a href="dialog.js.html#line194">line 194</a>
     </li></ul></dd>
     
     
@@ -5392,7 +5393,7 @@ Calling dialog.preventDefault() will cancel the default event.</p>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-dev</a> on Sat Oct 19 2013 20:46:28 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-dev</a> on Sat Oct 19 2013 21:10:22 GMT-0700 (PDT)
 </footer>
 
 <script> prettyPrint(); </script>

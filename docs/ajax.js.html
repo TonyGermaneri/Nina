@@ -121,15 +121,65 @@
 * });
 */
 Nina.ajax = function (args, options) {
+    "use strict";
     // using this as a reference http://www.w3.org/TR/XMLHttpRequest/
     Nina.assert(args !== undefined, 'Nina.ajax missing parameter.');
-    var self = {};
+    var self = {},
+        createRequest,
+        parseFiles,
+        pushFile,
+        writeFileId,
+        readyStateChange;
     self.options = options || { };
-    var createRequest = function() {
-        try { return new XMLHttpRequest(); } catch(e) {}
-        try { return new ActiveXObject('Msxml2.XMLHTTP'); } catch(e) {}
-        try { return new ActiveXObject('Microsoft.XMLHTTP'); } catch(e) {}
+    createRequest = function () {
+        try { return new XMLHttpRequest(); } catch (ignore) {}
+        try { return new ActiveXObject('Msxml2.XMLHTTP'); } catch (ignore) {}
+        try { return new ActiveXObject('Microsoft.XMLHTTP'); } catch (ignore) {}
         return null;
+    };
+    parseFiles = function () {
+        var x,
+            t,
+            p,
+            fa,
+            f,
+            y,
+            a,
+            z;
+        for (x = 0; args.length > x; x++) {
+            a = args[x];
+            for (t = 0; args[x].parameters.length > t; t++) {
+                p = args[x].parameters[t];
+                if (Nina.isArray(p)) {
+                    fa = [];
+                    for (z = 0; p.length > z; z++) {
+                        f = p[z];
+                        if (f.type === 'file') {
+                            for (y = 0; f.files.length > y; y++) {
+                                pushFile(f.files[y], a);
+                                f.files[y].fileId = writeFileId(a.method, a.instanceNumber, z, y);
+                                fa.push(f.files[y].fileId);
+                            }
+                        }
+                    }
+                    if (fa.length > 0) {
+                        args[x].parameters[t] = fa.join("");
+                    }
+                } else {
+                    if (p.type === 'file') {
+                        fa = [];
+                        for (y = 0; p.files.length > y; y++) {
+                            pushFile(p.files[y], a);
+                            p.files[y].fileId = writeFileId(a.method, a.instanceNumber, 0, y);
+                            fa.push(p.files[y].fileId);
+                        }
+                        if (fa.length > 0) {
+                            args[x].parameters[t] = fa.join("");
+                        }
+                    }
+                }
+            }
+        }
     };
     /**
     * Begins the request.
@@ -140,16 +190,19 @@ Nina.ajax = function (args, options) {
     * @returns {Nina.ajax} Nina.ajax instance.
     */
     self.beginRequest = function () {
+        var x,
+            d = new FormData(),
+            z;
         self.map = [];
         self.methodInstances = { };
         if (!Nina.isArray(args)) {
             args = [args];
         }
-        for (var x = 0; args.length > x; x++) {
+        for (x = 0; args.length > x; x++) {
             // assign this method an instance number in case it occurs more than once
             if (self.methodInstances[args[x].method] === undefined) {
                 self.methodInstances[args[x].method] = 0;
-            }else {
+            } else {
                 self.methodInstances[args[x].method]++;
             }
             self.map.push([
@@ -161,7 +214,7 @@ Nina.ajax = function (args, options) {
         }
         self.id = Nina.createUUID();
         self.request = createRequest();
-        self.request.upload.addEventListener('loadstart',function (e) {
+        self.request.upload.addEventListener('loadstart', function (e) {
             if (typeof self.options.loadstart !== 'function') { return; }
             self.options.loadstart.apply(this, [e]);
         }, false);
@@ -189,32 +242,31 @@ Nina.ajax = function (args, options) {
             if (typeof self.options.loadend !== 'function') { return; }
             self.options.loadend.apply(this, [e]);
         }, false);
-        self.request.addEventListener('readystatechange', function () {
+        self.request.addEventListener('readystatechange', function (e) {
             if (typeof self.options.readyStateChange !== 'function') {
                 readyStateChange();
                 return;
             }
             // allow user to abort default readStateChange by returning false.
-            if(self.options.readyStateChange.apply(this, [e])!==false) {
-                readyStateChange();
+            if (self.options.readyStateChange.apply(this, [e]) !== false) {
+                self.options.readyStateChange();
             }
         }, false);
         self.request.open(self.options.method || 'POST', (self.options.responderUrl || '/responder') + '?' + self.id, self.options.async === false ? false : true);
         self.request.setRequestHeader('Content-Type', self.options.contentType || 'application/x-www-form-urlencoded; charset=utf-8');
         self.request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-        if(self.options.headers!==undefined) {
-            for(var x=0;self.options.headers.length>x;x++) {
+        if (self.options.headers !== undefined) {
+            for (x = 0; self.options.headers.length > x; x++) {
                 self.request.setRequestHeader(self.options.headers[x][0], self.options.headers[x][1]);
             }
         }
-        var d = new FormData;
         d.append("id", self.id);
         // parse map looking for file inputs and replace them with IDs
-        parseFiles(self.map);
+        parseFiles();
         d.append("map", JSON.stringify(self.map));
-        for (var x = 0; args.length > x; x++) {
+        for (x = 0; args.length > x; x++) {
             if (args[x].files) {
-                for (var z = 0; args[x].files.length > z; z++) {
+                for (z = 0; args[x].files.length > z; z++) {
                     d.append(args[x].files[z].fileId, args[x].files[z]);
                 }
             }
@@ -222,71 +274,38 @@ Nina.ajax = function (args, options) {
         self.request.send(d);
         return self;
     };
-    var pushFile = function(f, a) {
+    pushFile = function (f, a) {
         if (Nina.isArray(a.files)) {
             a.files.push(f);
         } else {
             a.files = [f];
         }
     };
-    var writeFileId = function(method, instance, z, y) {
+    writeFileId = function (method, instance, z, y) {
         return "file:::" + method + '_' + instance + "_files_" + z + "_" + y;
     };
-    var parseFiles = function(map) {
-        for (var x = 0; args.length > x; x++) {
-            var a = args[x];
-            for (var t = 0; args[x].parameters.length > t; t++) {
-                var p = args[x].parameters[t];
-                if (Nina.isArray(p)) {
-                    var fa = [];
-                    for (var z = 0; p.length > z; z++) {
-                        var f = p[z];
-                        if (f.type == 'file') {
-                            for (var y = 0; f.files.length > y; y++) {
-                                pushFile(f.files[y], a);
-                                f.files[y].fileId = writeFileId(a.method, a.instanceNumber, z, y);
-                                fa.push(f.files[y].fileId);
-                            }
-                        }
-                    }
-                    if(fa.length>0) {
-                        args[x].parameters[t] = fa.join("");
-                    }
-                } else {
-                    if (p.type == 'file') {
-                        var fa = [];
-                        for (var y = 0; p.files.length > y; y++) {
-                            pushFile(p.files[y], a);
-                            p.files[y].fileId = writeFileId(a.method, a.instanceNumber, 0, y);
-                            fa.push(p.files[y].fileId);
-                        }
-                        if(fa.length>0) {
-                            args[x].parameters[t] = fa.join("");
-                        }
-                    }
-                }
-            }
-        }
-    };
-    var readyStateChange = function() {
-        if (self.request.readyState != 4 || self.request.status == 0) { return; }
-        if (self.request.status != 200) {
+    readyStateChange = function () {
+        var allResults,
+            instanceNumber,
+            x;
+        if (self.request.readyState !== 4 || self.request.status === 0) { return; }
+        if (self.request.status !== 200) {
             // an error occurred
             Nina.UI.Widget.log('Nina.ajax request returned a status of ' + self.request.status + ':\n' + self.request.responseText);
             return;
         }
-        var allResults = JSON.parse(self.request.responseText);
+        allResults = JSON.parse(self.request.responseText);
         // separate responses into map collection and call callback functions
-        for (var x = 0; args.length > x; x++) {
-            var instanceNumber = self.methodInstances[args[x].method] > 0 ? '_' + args[x].instanceNumber : '';
+        for (x = 0; args.length > x; x++) {
+            instanceNumber = self.methodInstances[args[x].method] > 0 ? '_' + args[x].instanceNumber : '';
             args[x].procedure.apply(args[x].context || this, [allResults[args[x].method + instanceNumber], allResults]);
-        }    
+        }
     };
-    if(self.options.delayRequest !== false){
+    if (self.options.delayRequest !== false) {
         self.beginRequest();
     }
     return self;
-}</code></pre>
+};</code></pre>
         </article>
     </section>
 
@@ -302,7 +321,7 @@ Nina.ajax = function (args, options) {
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-dev</a> on Sat Oct 19 2013 20:46:27 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-dev</a> on Sat Oct 19 2013 21:10:22 GMT-0700 (PDT)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -59,6 +59,7 @@
 * @memberOf Nina.UI
 */
 Nina.UI.taskBar = function (args) {
+    "use strict";
     // there can be only one
     if (Nina.UI.widgets.taskBar !== undefined) {
         return;
@@ -252,7 +253,7 @@ Nina.UI.taskBar = function (args) {
     };
     self.init = function () {
         // raise init event
-        if (self.raiseEvent('init', undefined, undefined, undefined)) { return self; };
+        if (self.raiseEvent('init', undefined, undefined, undefined)) { return self; }
         // create an id for this widget
         self.id = Nina.UI.widgetIdCount++;
         Nina.UI.widgets.taskBar = self;
@@ -270,56 +271,60 @@ Nina.UI.taskBar = function (args) {
         self.taskBar.style.position = 'absolute';
         self.taskBar.style.overflow = 'hidden';
         self.taskBar.onclick = function (e) {
-            if (self.raiseEvent('click', e, self.taskBar, [])) { return self; };
+            if (self.raiseEvent('click', e, self.taskBar, [])) { return self; }
         };
         self.taskBar.onmouseover = function (e) {
-            if (self.raiseEvent('mouseover', e, self.taskBar, [])) { return self; };
+            if (self.raiseEvent('mouseover', e, self.taskBar, [])) { return self; }
         };
         self.taskBar.onmouseout = function (e) {
-            if (self.raiseEvent('mouseout', e, self.taskBar, [])) { return self; };
+            if (self.raiseEvent('mouseout', e, self.taskBar, [])) { return self; }
         };
         window.document.body.appendChild(self.taskBar);
         window.addEventListener('resize', self.browserResize, true);
         self.createPublicMembers();
         return self.setRect().stylize();
     };
-    self.browserResize = function() {
+    self.browserResize = function () {
         self.setRect();
         return;
     };
     self.setRect = function (rect) {
-        if (self.raiseEvent('updateRect', undefined, undefined, undefined)) { return self; };
+        if (self.raiseEvent('updateRect', undefined, undefined, undefined)) { return self; }
         rect = rect || self.rect;
-        var s = self.style;
+        var s = self.style,
+            items,
+            x,
+            l;
         self.updateElementRect(self.taskBar,
             self.client().w,
             rect.h,
             rect.x,
-            rect.y + self.client().h - rect.h - s.border.size
-        );
-        var items = self.items;
-        for (var x = 0; items.length > x; x++) {
-            var l = items[x].element;
+            rect.y + self.client().h - rect.h - s.border.size);
+        items = self.items;
+        for (x = 0; items.length > x; x++) {
+            l = items[x].element;
             l.firstChild.innerHTML = '';
             self.appendObj(l.firstChild, items[x].text);
             self.updateElementRect(items[x].element,
                 s.item.rect.w,
                 s.item.rect.h,
                 s.item.rect.x,
-                s.item.rect.y
-            );
+                s.item.rect.y);
             self.clipText(l.firstChild, s.item.rect.w - s.item.padding.r - s.item.padding.l);
         }
         return self;
     };
     self.stylize = function () {
-        if (self.raiseEvent('updateStyle', undefined, undefined, undefined)) { return self; };
-        var s = self.style;
+        if (self.raiseEvent('updateStyle', undefined, undefined, undefined)) { return self; }
+        var s = self.style,
+            items,
+            x,
+            l;
         self.taskBar.style.background = s.background;
         self.taskBar.style.borderTop = self.border(s.border);
-        var items = self.items;
-        for (var x = 0; items.length > x; x++) {
-            var l = items[x].element;
+        items = self.items;
+        for (x = 0; items.length > x; x++) {
+            l = items[x].element;
             l.firstChild.style.padding = self.pad(s.item.padding);
             l.style.fontFamily = s.item.font;
             l.style.color = s.item.textColor;
@@ -329,29 +334,30 @@ Nina.UI.taskBar = function (args) {
         }
         return self;
     };
-    self.redraw = function() {
+    self.redraw = function () {
         return self.stylize().setRect();
     };
     self.add = function (obj, click, text, over, out) {
-        var item = {
-            obj: obj,
-            click: click,
-            text: text,
-            mouseover: over,
-            mouseout: out,
-            element: self.createElement('div')
-        };
-        if (self.raiseEvent('addItem', obj, item, [])) { return self; };
-        var l = item.element;
-        l.onclick = function(e) {
-            if (self.raiseEvent('itemClick', e, l, [])) { return self; };
+        var l,
+            item = {
+                obj: obj,
+                click: click,
+                text: text,
+                mouseover: over,
+                mouseout: out,
+                element: self.createElement('div')
+            };
+        if (self.raiseEvent('addItem', obj, item, [])) { return self; }
+        l = item.element;
+        l.onclick = function (e) {
+            if (self.raiseEvent('itemClick', e, l, [])) { return self; }
             self.activeItem = item;
             if (!item.click) { return self; }
             item.click.apply(self, [e, l]);
             return self;
         };
         l.onmouseover = function (e) {
-            if (self.raiseEvent('itemMouseover', e, l, [])) { return self; };
+            if (self.raiseEvent('itemMouseover', e, l, [])) { return self; }
             l.style.background = self.style.item.hover.background;
             l.style.color = self.style.item.hover.textColor;
             self.hoverItem = item;
@@ -360,7 +366,7 @@ Nina.UI.taskBar = function (args) {
             return self;
         };
         l.onmouseout = function (e) {
-            if (self.raiseEvent('itemMouseout', e, l, [])) { return self; };
+            if (self.raiseEvent('itemMouseout', e, l, [])) { return self; }
             l.style.background = self.style.item.background;
             l.style.color = self.style.item.textColor;
             if (!item.mouseout) { return self; }
@@ -380,10 +386,11 @@ Nina.UI.taskBar = function (args) {
         return item;
     };
     self.remove = function (item) {
-        var items = self.items;
-        for (var x = 0; items.length > x; x++) {
+        var items = self.items,
+            x;
+        for (x = 0; items.length > x; x++) {
             if (items[x] === item) {
-                if (self.raiseEvent('removeItem', items[x], item.element, [])) { return self; };
+                if (self.raiseEvent('removeItem', items[x], item.element, [])) { return self; }
                 self.taskBar.removeChild(item.element);
                 self.items.splice(x, 1);
             }
@@ -409,7 +416,7 @@ Nina.UI.taskBar = function (args) {
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-dev</a> on Sat Oct 19 2013 20:46:27 GMT-0700 (PDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-dev</a> on Sat Oct 19 2013 21:10:22 GMT-0700 (PDT)
 </footer>
 
 <script> prettyPrint(); </script>
